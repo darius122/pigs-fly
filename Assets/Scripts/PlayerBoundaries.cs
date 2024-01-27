@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBoundaries : MonoBehaviour
 {
-    private Vector2 screenBounds;
+    public Vector2 screenBounds;
     private float objectWidth;
     private float objectHeight;
     private Rigidbody2D rb;
@@ -35,7 +35,7 @@ public class PlayerBoundaries : MonoBehaviour
     private void CheckCollisionWithBounds()
     {
         //if touching the top
-        if (transform.position.y > screenBounds.y - objectHeight )
+        if (transform.position.y > screenBounds.y - objectHeight)
         {
             rb.velocity = Vector2.zero;
         }
