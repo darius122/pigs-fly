@@ -754,11 +754,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: Rose't
+  - name: Ari
     sentences:
-    - AJKSJAKSJAKJSAKSJA
-    - EIOWIEOWIOEWO
-    - NXZMNZMZMXNZMXM
+    - fewfew
+    - grhrh
+    - hrhrh
+  - name: adada
+    sentences:
+    - fewfew
+    - grhrh
+    - hrhrh
+  - name: adada
+    sentences:
+    - fewfew
+    - grhrh
+    - hrhrh
 --- !u!114 &666774112
 MonoBehaviour:
   m_ObjectHideFlags: 0
