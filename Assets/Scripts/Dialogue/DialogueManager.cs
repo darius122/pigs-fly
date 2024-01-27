@@ -1,37 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
+
     public Animator dialogueAnim;
+
     int aa;
     Dialogue[] dialogueVal;
     private Queue<string> sentences;
+
+    bool dialogueStarted = false;
+
+    //fade to black
+    public GameObject blackPanel;
+    bool endedDialogue = false;
+    float fadeAmount;
+    Color color;
+
     // Start is called before the first frame update
     void Start()
     {
         sentences = new Queue<string>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && dialogueStarted)
         {
             DisplayNextSentence();
         }
-    }
 
+        if(endedDialogue)
+        {
+            color = blackPanel.GetComponent<Image>().color;
+            if(blackPanel.GetComponent<Image>().color.a < 1)
+            {
+                fadeAmount = color.a + Time.deltaTime;
+                color = new Color(color.r, color.g, color.b, fadeAmount);
+                blackPanel.GetComponent<Image>().color = color;
+            }
+            else
+            {
+                //load next scene
+            }
+        }    
+    }
+    
     public void StartDialogue(Dialogue[] dialogue)
     {
+        dialogueStarted = true;
+
         dialogueVal = dialogue;
         dialogueAnim.SetBool("IsOpen", true);
 
-
-        //Debug.Log(i);
         nameText.text = dialogue[aa].name;
         sentences.Clear();
 
@@ -41,10 +69,6 @@ public class DialogueManager : MonoBehaviour
         }
         DisplayNextSentence();
 
-
-
-
-
     }
 
 
@@ -52,22 +76,25 @@ public class DialogueManager : MonoBehaviour
     {
         if (sentences.Count == 0)
         {
-            aa ++;
-            if (NextPerson())
+            aa++;
+            if (!NextPerson())
             {
                 return;
             }
         }
-
-        string sentence = sentences.Dequeue();
-
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        if(sentences != null)
+        {
+            string sentence = sentences.Dequeue();
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(sentence));
+        }
+        
+     
     }
 
     bool NextPerson()
     {
-        if (aa >= dialogueVal.Length -1)
+        if (aa >= dialogueVal.Length)
         {
             EndDialogue();
             return true;
@@ -86,8 +113,8 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-         dialogueAnim.SetBool("IsOpen", false);
-         aa++;
+        dialogueAnim.SetBool("IsOpen", false);
+        endedDialogue = true;
     }
 
     IEnumerator TypeSentence(string sentence)
