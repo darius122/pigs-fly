@@ -8,6 +8,8 @@ public class parallaxScroll : MonoBehaviour
     float distance;
     [Range(0f, 1f)]
     public float speed = 0.5f;
+    public Camera orthographicCamera;
+    [SerializeField] Transform parent;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,11 @@ public class parallaxScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+   
+
         distance += Time.deltaTime*speed;
         mat.SetTextureOffset("_MainTex",Vector2.right*distance);
     }
+
+    
 }
