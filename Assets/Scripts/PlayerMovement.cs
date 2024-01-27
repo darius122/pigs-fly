@@ -1,27 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float gravity;
-    private Vector3 velocity = Vector3.zero;
+    [SerializeField] private float jumpForce;
+    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ApplyGravity();
+        if (Input.GetMouseButtonDown(0))
+            Jump();
     }
-    private void ApplyGravity()
+    private void Jump()
     {
-        velocity.y += gravity * Time.deltaTime;
-
-        // Update the object's position based on the velocity
-        transform.position += velocity * Time.deltaTime;
+        rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
     }
 }
