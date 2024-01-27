@@ -13,12 +13,6 @@ public class PlayerHealth : MonoBehaviour
     {
         populateHealthSprites(health);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void populateHealthSprites(int currHealth)
     {
         foreach(Image image in heartSprites)
