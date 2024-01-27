@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class PauseMenuManager : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI countdownText;
 	[SerializeField] private GameObject pauseMenu;
+	[SerializeField] private RectTransform pauseMenuRect;
+	[SerializeField] private float leftPosX, middlePosX;
+	[SerializeField] private float tweenDuration;
+	[SerializeField] private CanvasGroup fadeCG;
 
 	bool isOpen;
 	bool isPPressedOnce;
@@ -25,18 +30,19 @@ public class PauseMenuManager : MonoBehaviour
 			{
 				pauseMenu.SetActive(true);
 				isOpen = true;
+				PausePanelIntro();
+				Time.timeScale = 0.0f;
+
 			}
 			else
 			{
 				OnBackButton();
 			}
+			if (pauseMenu.activeSelf)
+			{
+				Time.timeScale = 0.0f;
+			}
 		}
-
-		if (pauseMenu.activeInHierarchy || isPPressedOnce)
-		{
-			Time.timeScale = 0.0f;
-		}
-	
     }
 
 	public IEnumerator StartCountdown(float waitSecs)
@@ -47,7 +53,7 @@ public class PauseMenuManager : MonoBehaviour
 		countdownTimer -= 1;
 		if (countdownTimer != -1)
 		{
-			StartCoroutine(StartCountdown(1.5f));
+			StartCoroutine(StartCountdown(1.0f));
 		}
 		else
 		{
@@ -63,13 +69,26 @@ public class PauseMenuManager : MonoBehaviour
 
 	public void OnBackButton()
 	{
-		pauseMenu.SetActive(false);
+		PausePanelOutro();
+
 		isOpen = false;
 		if (!isPPressedOnce)
 		{
 			countdownText.text = (countdownTimer + 1).ToString();
-			StartCoroutine(StartCountdown(1.5f));
+			StartCoroutine(StartCountdown(1.0f));
 		}
 		isPPressedOnce = true;
+	}
+
+	public void PausePanelIntro()
+	{
+		fadeCG.DOFade(1, tweenDuration).SetUpdate(UpdateType.Late,true);
+		pauseMenuRect.DOAnchorPosX(middlePosX, tweenDuration).SetUpdate(UpdateType.Late, true);
+	}
+
+	public void PausePanelOutro()
+	{
+		fadeCG.DOFade(0, tweenDuration).SetUpdate(UpdateType.Late, true);
+		pauseMenuRect.DOAnchorPosX(leftPosX, tweenDuration).SetUpdate(UpdateType.Late, true).OnComplete(() => pauseMenu.SetActive(false));
 	}
 }

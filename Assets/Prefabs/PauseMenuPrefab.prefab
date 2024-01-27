@@ -39,8 +39,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 400}
+  m_AnchoredPosition: {x: 600, y: 0}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3874574029804179603
 CanvasRenderer:
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -162.99438, y: -111.10332, z: -185.36778, w: -110.97865}
+  m_margin: {x: -162.99438, y: -115.17287, z: -182.31563, w: -106.9091}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -362,6 +362,7 @@ GameObject:
   - component: {fileID: 3334025020856482733}
   - component: {fileID: 4281073773002553431}
   - component: {fileID: 8367552858663398929}
+  - component: {fileID: 3996894989457104845}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -472,18 +473,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4624327628272501594}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 3050563870716898669}
         m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
         m_MethodName: OnBackButton
@@ -496,6 +485,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3996894989457104845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3712760885592529811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994c6dc5b320d9048a7752588494f502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3754807539937494310
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +644,7 @@ GameObject:
   - component: {fileID: 4796990874310390762}
   - component: {fileID: 2235302101602894678}
   - component: {fileID: 1365796878730955743}
+  - component: {fileID: 1216447211323098796}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -754,9 +756,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+        m_TargetAssemblyTypeName: SettingsMenuManager, Assembly-CSharp
+        m_MethodName: OnSettingsButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -765,6 +767,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &1216447211323098796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3814461497092155979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994c6dc5b320d9048a7752588494f502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4624327628272501594
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,6 +790,7 @@ GameObject:
   - component: {fileID: 738713207542813354}
   - component: {fileID: 5437532077447228694}
   - component: {fileID: 8650388621877554612}
+  - component: {fileID: 7841733458693181667}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -842,6 +857,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &7841733458693181667
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4624327628272501594}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4958530648679582957
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,6 +922,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownText: {fileID: 1567478114847846429}
   pauseMenu: {fileID: 4624327628272501594}
+  pauseMenuRect: {fileID: 1528551694435597735}
+  leftPosX: 600
+  middlePosX: 0
+  tweenDuration: 0.3
+  fadeCG: {fileID: 7841733458693181667}
 --- !u!1 &7502612905152810358
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +939,7 @@ GameObject:
   - component: {fileID: 6446903493443845436}
   - component: {fileID: 1129635142141317623}
   - component: {fileID: 650321038551857747}
+  - component: {fileID: 1986160495075815771}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -1017,6 +1050,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1986160495075815771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7502612905152810358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994c6dc5b320d9048a7752588494f502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7923384388837673130
 GameObject:
   m_ObjectHideFlags: 0
