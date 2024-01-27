@@ -45,4 +45,8 @@ public class PlayerBoundaries : MonoBehaviour
         }
         else rb.gravityScale = gravity;
     }
+    public void reCalculateBounds()
+    {
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+    }
 }
