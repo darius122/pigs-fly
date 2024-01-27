@@ -2,6 +2,10 @@
 	"objectInfoList": [
 		{"name": "pitchfork"},
 		{"name": "tire"},
-		{"name": "horn"}
+		{"name": "horn"},
+		{"name": "rocket"},
+		{"name": "fridge"},
+		{"name": "statueofliberty"},
+		{"name": "caishenye"}
 	]
 }

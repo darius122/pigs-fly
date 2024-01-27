@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerBoundaries : MonoBehaviour
 {
+    public static PlayerBoundaries instance;
+
     public Vector2 screenBounds;
     private float objectWidth;
     private float objectHeight;
@@ -11,6 +13,17 @@ public class PlayerBoundaries : MonoBehaviour
 
     [SerializeField] private float gravity;
 
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +45,7 @@ public class PlayerBoundaries : MonoBehaviour
         viewPos.y = Mathf.Clamp(viewPos.y, screenBounds.y * -1 + objectHeight, screenBounds.y - objectHeight);
         transform.position = viewPos;
 
-        cameraManegement.ins.MoveIndicator();
+        //cameraManegement.ins.MoveIndicator();
 
     }
     private void CheckCollisionWithBounds()

@@ -12,8 +12,6 @@ public class ObjectSpawner : MonoBehaviour
 
     [SerializeField] private TextAsset objectTextAsset;
 
-    public PlayerBoundaries pb;
-
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -31,6 +29,7 @@ public class ObjectSpawner : MonoBehaviour
         
         objectList = JsonUtility.FromJson<ObjectInfoList>(objectTextAsset.text);
         InvokeRepeating("SpawnObjects", 3f, 2f);
+       // Invoke("SpawnObjects", 3f);
     }
 
     // Update is called once per frame
@@ -40,8 +39,8 @@ public class ObjectSpawner : MonoBehaviour
     }
     private void SpawnObjects()
     {
-        float xPos = pb.screenBounds.x - 2;
-        float randomY = Random.Range(-pb.screenBounds.y + 2, pb.screenBounds.y - 2);
+        float xPos = PlayerBoundaries.instance.screenBounds.x - 2;
+        float randomY = Random.Range(-PlayerBoundaries.instance.screenBounds.y + 2, PlayerBoundaries.instance.screenBounds.y - 2);
         spawnPosition = new Vector2(xPos,randomY);
         GameObject newObject = Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
         int rand = Random.Range(0, objectList.objectInfoList.Length);
