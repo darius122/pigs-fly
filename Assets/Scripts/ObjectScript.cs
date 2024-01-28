@@ -15,13 +15,16 @@ public class ObjectScript : MonoBehaviour
     {
         transform.Rotate(new Vector3(0, 0, 1f), 100 * Time.deltaTime);
         transform.Translate(Vector2.left * objectSpeed * Time.deltaTime, Space.World);
+        if (audioSource != null && audioSource.time > 5f)
+            audioSource.Stop();
         CheckDestroy();
     }
     public void Init(ObjectInfo info)
     {
         sr.sprite = Resources.Load<Sprite>("Sprites/FallingObjects/" + info.name);
         audioSource.clip = Resources.Load<AudioClip>("Sounds/" + info.name);
-        audioSource.Play();
+        if(audioSource.clip != null)
+            audioSource.Play();
         boxCollider.size = sr.bounds.size;
         boxCollider.size /= transform.localScale;
         //sr.sprite = 

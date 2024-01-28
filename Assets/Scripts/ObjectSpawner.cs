@@ -39,7 +39,7 @@ public class ObjectSpawner : MonoBehaviour
     }
     private void SpawnObjects()
     {
-        float xPos = PlayerBoundaries.instance.screenBounds.x - 2;
+        float xPos = PlayerBoundaries.instance.screenBounds.x + 2;
         float randomY = Random.Range(-PlayerBoundaries.instance.screenBounds.y + 2, PlayerBoundaries.instance.screenBounds.y - 2);
         spawnPosition = new Vector2(xPos,randomY);
         GameObject newObject = Instantiate(objectPrefab, spawnPosition, Quaternion.identity);

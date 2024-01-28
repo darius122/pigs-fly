@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float jumpForce;
     private Rigidbody2D rb;
+    bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +17,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetMouseButtonDown(0))
+        if (gameObject.GetComponent<PlayerHealth>().health == 0)
+        {
+            isDead = true;
+        }
+
+        if (Input.GetMouseButtonDown(0) && !isDead)
             Jump();
         //Debug.Log(rb.velocity);
     }
