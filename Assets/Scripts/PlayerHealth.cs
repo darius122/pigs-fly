@@ -24,13 +24,19 @@ public class PlayerHealth : MonoBehaviour
             {
                 StopAllCoroutines();
                 StartCoroutine(DieScreen());
+                GetComponent<playerAnimation>().SetTrigger("triggerDeath");
+            }
+            else
+            {
+
+                GetComponent<playerAnimation>().SetTrigger("triigerHit");
             }
         }
     }
   
     IEnumerator DieScreen()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.3f);
         dieScreen.SetActive(true);
 
     }

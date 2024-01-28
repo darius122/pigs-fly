@@ -43,10 +43,9 @@ public class cameraManegement : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.L))
+       if(Input.GetKeyDown(KeyCode.L))
         {
-
-        test.SetTrigger("triggerBruh");
+            ExpandView(5); test.SetTrigger();
         }
     }
 
@@ -158,8 +157,9 @@ public class cameraManegement : MonoBehaviour
     {
         yield return new WaitForSeconds(15);
         ExpandView(5);
-        if(level < 6)
+        if (level < 6)
         {
+            test.SetTrigger();
             StartCoroutine(Resize());
 
         }
@@ -170,7 +170,7 @@ public class cameraManegement : MonoBehaviour
     }
     void ExpandView(float a)
     {
-        level+=2;
+        //level+=2;
         DOTween.To(() => currentOrthSize, x => currentOrthSize = x, currentOrthSize+a, 1f).OnUpdate(() => {
 
             this.a.m_Lens.OrthographicSize = currentOrthSize;
