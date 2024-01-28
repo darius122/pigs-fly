@@ -45,7 +45,7 @@ public class PlayerBoundaries : MonoBehaviour
         viewPos.y = Mathf.Clamp(viewPos.y, screenBounds.y * -1 + objectHeight, screenBounds.y - objectHeight);
         transform.position = viewPos;
 
-        //cameraManegement.ins.MoveIndicator();
+        cameraManegement.ins.MoveIndicator();
 
     }
     private void CheckCollisionWithBounds()

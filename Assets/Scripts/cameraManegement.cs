@@ -15,6 +15,7 @@ public class cameraManegement : MonoBehaviour
     [SerializeField] float currentOrthSize;
     [SerializeField] Transform pig;
     [SerializeField] Transform pigBody;
+    public float level = 0;
 
     [SerializeField] float disTance;
     public static cameraManegement ins;
@@ -34,21 +35,21 @@ public class cameraManegement : MonoBehaviour
 
         Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(pig.transform.position);
         Vector2 WorldObject_ScreenPosition = new Vector2(
-        ((ViewportPosition.x * RT.sizeDelta.x) - (RT.sizeDelta.x * 0.5f)),
+        (0),
         ((ViewportPosition.y * RT.sizeDelta.y) - (RT.sizeDelta.y * 0.5f)));
 
         UI_Element.anchoredPosition = WorldObject_ScreenPosition;
 
         Vector2 ViewportPosition2 = Camera.main.WorldToViewportPoint(pigBody.position) ;
         Vector2 WorldObject_ScreenPosition2 = new Vector2(
-        ((ViewportPosition2.x * RT.sizeDelta.x) - (RT.sizeDelta.x * 0.5f)),
+        (0),
         ((ViewportPosition2.y * RT.sizeDelta.y) - (RT.sizeDelta.y * 0.5f)));
 
         Vector2 dis = (WorldObject_ScreenPosition2 - WorldObject_ScreenPosition);
         disTance = dis.magnitude;
         Debug.Log((ViewportPosition.y * RT.sizeDelta.y) + ":" + (ViewportPosition.y * RT.sizeDelta.y));
     }
-
+   
 
 
     public void MoveIndicator()
@@ -60,21 +61,20 @@ public class cameraManegement : MonoBehaviour
 
         UI_Element.anchoredPosition = WorldObject_ScreenPosition;
 
-        Debug.Log(UI_Element.anchoredPosition);
     }
 
     void MovePlaceMentMarker()
     {
         Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(pig.transform.position);
         Vector2 WorldObject_ScreenPosition = new Vector2(
-        ((ViewportPosition.x * RT.sizeDelta.x) - (RT.sizeDelta.x * 0.5f)),
+        (0),
         ((ViewportPosition.y * RT.sizeDelta.y) - (RT.sizeDelta.y * 0.5f)));
 
         Vector2 ViewportPosition2 = Camera.main.WorldToViewportPoint(pigBody.position);
         Vector2 WorldObject_ScreenPosition2 = new Vector2(
-        ((ViewportPosition2.x * RT.sizeDelta.x) - (RT.sizeDelta.x * 0.5f)),
+        (0),
         ((ViewportPosition2.y * RT.sizeDelta.y) - (RT.sizeDelta.y * 0.5f)));
-        if (Vector2.Distance(WorldObject_ScreenPosition, WorldObject_ScreenPosition2)<disTance)
+        if (WorldObject_ScreenPosition.y - WorldObject_ScreenPosition2.y <disTance)
         {
             pig.transform.Translate(Vector2.up);
         }
@@ -89,6 +89,7 @@ public class cameraManegement : MonoBehaviour
     }
     void ExpandView(float a)
     {
+        level+=2;
         DOTween.To(() => currentOrthSize, x => currentOrthSize = x, currentOrthSize+a, 1f).OnUpdate(() => {
 
             this.a.m_Lens.OrthographicSize = currentOrthSize;
