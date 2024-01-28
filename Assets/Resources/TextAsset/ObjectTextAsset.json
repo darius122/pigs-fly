@@ -4,13 +4,15 @@
 		{"name": "beachball"},
 		{"name": "pitchfork"},
 		{"name": "tire"},
+		{"name": "chainsaw"},
+		{"name": "seal"},
 		{"name": "fridge"},
 		{"name": "atomicbomb_dirt"},
 		{"name": "rocket"},
 		{"name": "atomicbomb"},
 		{"name": "statueofliberty"},
-		{"name": "caishenye"},
 		{"name": "ship"},
-		{"name": "atomicbomb_big"}
+		{"name": "atomicbomb_big"},
+		{"name": "caishenye"}
 	]
 }
