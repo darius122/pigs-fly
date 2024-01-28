@@ -170,7 +170,7 @@ public class cameraManegement : MonoBehaviour
     }
     void ExpandView(float a)
     {
-        //level+=2;
+        level+=2;
         DOTween.To(() => currentOrthSize, x => currentOrthSize = x, currentOrthSize+a, 1f).OnUpdate(() => {
 
             this.a.m_Lens.OrthographicSize = currentOrthSize;
