@@ -20,6 +20,7 @@ public class MainMenuManager : MonoBehaviour
 	}
 	private void Start()
 	{
+		SettingsMenuManager.instance.PlayMusic("MainMenu");
 	}
 	public void OnPlay()
 	{
