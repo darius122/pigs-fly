@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DieScreen : MonoBehaviour
 {
@@ -69,5 +70,8 @@ public class DieScreen : MonoBehaviour
     public void OnClickMainMenu()
     {
         //back to main menu
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+
+
     }
 }

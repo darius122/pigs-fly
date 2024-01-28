@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public GameObject dieScreen;
-    private int health = 2;
+    public int health = 2;
     // Start is called before the first frame update
     void Start()
     {
