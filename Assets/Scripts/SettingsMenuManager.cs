@@ -17,7 +17,11 @@ public class SettingsMenuManager : MonoBehaviour
     [SerializeField] private CanvasGroup fadeCG;
     [SerializeField] private Slider sliderMusic , sliderSFX;
     [SerializeField] private TextMeshProUGUI musicText, sfxText;
-    public static SettingsMenuManager instance;
+	[SerializeField] private Image musicImg, sfxImg;
+	[SerializeField] private Sprite muteImg, unmuteImg;
+	bool isMusicMuted, isSFXMuted;
+
+	public static SettingsMenuManager instance;
     bool isOpen;
 
 	private void Awake()
@@ -100,11 +104,27 @@ public class SettingsMenuManager : MonoBehaviour
 	public void ToggleMusic()
 	{
 		musicSource.mute = !musicSource.mute;
+		if (musicSource.mute)
+		{
+			musicImg.sprite = muteImg;
+		}
+		else
+		{
+			musicImg.sprite = unmuteImg;
+		}
 	}
 
 	public void ToggleSFX()
 	{
 		sfxSource.mute = !sfxSource.mute;
+		if (sfxSource.mute)
+		{
+			sfxImg.sprite = muteImg;
+		}
+		else
+		{
+			sfxImg.sprite = unmuteImg;
+		}
 	}
 
 	public void MusicVolume(float volume)

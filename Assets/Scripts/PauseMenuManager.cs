@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
+	public static PauseMenuManager instance;
 	[SerializeField] private TextMeshProUGUI countdownText;
 	[SerializeField] private GameObject pauseMenu;
 	[SerializeField] private RectTransform pauseMenuRect;
@@ -17,14 +20,23 @@ public class PauseMenuManager : MonoBehaviour
 	bool isPPressedOnce;
 	int countdownTimer = 2;
 
-	private void Start()
+	private void Awake()
 	{
+		if (instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
 	}
 	// Update is called once per frame
 	void Update()
     {
 
-		if (Input.GetKeyDown(KeyCode.P) && !isPPressedOnce)
+		if ((Input.GetKeyDown(KeyCode.P) && !isPPressedOnce) && SceneManager.GetActiveScene().buildIndex != 0)
 		{
 			if (!isOpen)
 			{
@@ -90,5 +102,10 @@ public class PauseMenuManager : MonoBehaviour
 	{
 		fadeCG.DOFade(0, tweenDuration).SetUpdate(UpdateType.Late, true);
 		pauseMenuRect.DOAnchorPosX(leftPosX, tweenDuration).SetUpdate(UpdateType.Late, true).OnComplete(() => pauseMenu.SetActive(false));
+	}
+
+	public void OnButtonMainMenu()
+	{
+		SceneManager.LoadScene("MainMenu");
 	}
 }
