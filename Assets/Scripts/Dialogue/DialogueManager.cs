@@ -32,7 +32,7 @@ public class DialogueManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && dialogueStarted)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && dialogueStarted)
         {
             DisplayNextSentence();
         }
