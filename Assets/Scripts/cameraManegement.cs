@@ -156,7 +156,11 @@ public class cameraManegement : MonoBehaviour
     {
         yield return new WaitForSeconds(15);
         ExpandView(5);
-        StartCoroutine(Resize());
+        if(level < 5 )
+        {
+            StartCoroutine(Resize());
+
+        }
     }
     void ExpandView(float a)
     {
