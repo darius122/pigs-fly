@@ -46,8 +46,25 @@ public class PlayerBoundaries : MonoBehaviour
         transform.position = viewPos;
 
         cameraManegement.ins.MoveIndicator();
+        cameraManegement.ins.BotMoveIndicator();
+
+        CallFlip();
+
 
     }
+
+    public void CallFlip()
+    {
+        if (transform.position.y > screenBounds.y * 0.6)
+        {
+            cameraManegement.ins.flipTrue(true);
+        }
+        else
+        {
+            cameraManegement.ins.flipTrue(false);
+        }
+    }
+
     private void CheckCollisionWithBounds()
     {
         //if touching the top
