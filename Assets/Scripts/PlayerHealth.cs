@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public GameObject dieScreen;
     private int health = 2;
     public List<Image> heartSprites = new List<Image>();
     // Start is called before the first frame update
@@ -31,6 +32,19 @@ public class PlayerHealth : MonoBehaviour
             health--;
             populateHealthSprites(health);
             Destroy(collision.gameObject);
+
+            if (health == 0)
+            {
+                StopAllCoroutines();
+                StartCoroutine(DieScreen());
+            }
         }
+    }
+  
+    IEnumerator DieScreen()
+    {
+        yield return new WaitForSeconds(2f);
+        dieScreen.SetActive(true);
+
     }
 }

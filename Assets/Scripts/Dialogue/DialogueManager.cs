@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
 
     public Animator dialogueAnim;
+    bool canClickNext = false;
 
     int aa;
     Dialogue[] dialogueVal;
@@ -32,7 +33,7 @@ public class DialogueManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && dialogueStarted)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && dialogueStarted && canClickNext)
         {
             DisplayNextSentence();
         }
@@ -124,7 +125,17 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.02f);
+
+            if (dialogueText.text == sentence)
+            {
+                canClickNext = true;
+            }
+            else
+            {
+                canClickNext = false;
+            }
         }
+        
     }
 
 

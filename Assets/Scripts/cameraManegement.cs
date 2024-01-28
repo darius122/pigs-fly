@@ -24,6 +24,8 @@ public class cameraManegement : MonoBehaviour
 
     [SerializeField] GameObject bg, bgparent;
     [SerializeField] playerAnimation test;
+
+    public GameObject winScreen;
     private void Awake()
     {
         ins = this;
@@ -156,10 +158,14 @@ public class cameraManegement : MonoBehaviour
     {
         yield return new WaitForSeconds(15);
         ExpandView(5);
-        if(level < 5 )
+        if(level < 6)
         {
             StartCoroutine(Resize());
 
+        }
+        else
+        {
+            winScreen.SetActive(true);
         }
     }
     void ExpandView(float a)
