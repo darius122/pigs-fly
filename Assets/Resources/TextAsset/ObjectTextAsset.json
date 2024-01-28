@@ -1,11 +1,18 @@
 {
 	"objectInfoList": [
+		{"name": "horn"},
+		{"name": "beachball"},
 		{"name": "pitchfork"},
 		{"name": "tire"},
-		{"name": "horn"},
-		{"name": "rocket"},
+		{"name": "chainsaw"},
+		{"name": "seal"},
 		{"name": "fridge"},
+		{"name": "atomicbomb_dirt"},
+		{"name": "rocket"},
+		{"name": "atomicbomb"},
 		{"name": "statueofliberty"},
+		{"name": "ship"},
+		{"name": "atomicbomb_big"},
 		{"name": "caishenye"}
 	]
 }

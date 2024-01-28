@@ -43,7 +43,9 @@ public class ObjectSpawner : MonoBehaviour
         float randomY = Random.Range(-PlayerBoundaries.instance.screenBounds.y + 2, PlayerBoundaries.instance.screenBounds.y - 2);
         spawnPosition = new Vector2(xPos,randomY);
         GameObject newObject = Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
-        int rand = Random.Range(0, objectList.objectInfoList.Length);
+        int rand = (int)Random.Range(cameraManegement.ins.level, cameraManegement.ins.level + 2);
+        rand = (int)Mathf.Clamp(rand, cameraManegement.ins.level, objectList.objectInfoList.Length - 1);
+        Debug.Log(rand);
         //ObjectScript _objectScript 
         newObject.GetComponent<ObjectScript>().Init(objectList.objectInfoList[rand]);
         //objectList.Add(new)
