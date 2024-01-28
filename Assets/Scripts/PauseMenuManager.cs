@@ -16,7 +16,7 @@ public class PauseMenuManager : MonoBehaviour
 	[SerializeField] private float tweenDuration;
 	[SerializeField] private CanvasGroup fadeCG;
 
-	bool isOpen;
+	public bool isOpen;
 	bool isPPressedOnce;
 	int countdownTimer = 2;
 
