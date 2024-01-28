@@ -86,6 +86,21 @@ public class SettingsMenuManager : MonoBehaviour
 		}
 	}
 
+	public void StopMusic(string name)
+	{
+		Sound s = Array.Find(musicSounds, result => result.name == name);
+
+		if (s == null)
+		{
+			Debug.Log("Sound not found");
+		}
+		else
+		{
+			musicSource.clip = s.clip;
+			musicSource.DOFade(0, 2f).OnComplete(()=>musicSource.Stop());
+		}
+	}
+
 	public void PlaySFX(string name)
 	{
 		Sound s = Array.Find(sfxSounds, result => result.name == name);

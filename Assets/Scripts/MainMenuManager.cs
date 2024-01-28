@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class MainMenuManager : MonoBehaviour
 {
 	[SerializeField] public Animator[] animator;
+	[SerializeField] private CanvasGroup blackPanel;
 	float offsetTimer;
 	private void Update()
 	{
@@ -24,7 +26,9 @@ public class MainMenuManager : MonoBehaviour
 	}
 	public void OnPlay()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		blackPanel.DOFade(1, 2f).OnComplete(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+		SettingsMenuManager.instance.StopMusic("MainMenu");
+
 	}
 	public void OnSettings()
 	{

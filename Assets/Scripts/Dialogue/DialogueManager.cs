@@ -33,8 +33,8 @@ public class DialogueManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && dialogueStarted && canClickNext)
-        {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && dialogueStarted && canClickNext && !PauseMenuManager.instance.isOpen)
+            {
             DisplayNextSentence();
         }
 
@@ -83,7 +83,7 @@ public class DialogueManager : MonoBehaviour
                 return;
             }
         }
-        if(sentences != null)
+        if(sentences.Count != 0)
         {
             string sentence = sentences.Dequeue();
             StopAllCoroutines();
