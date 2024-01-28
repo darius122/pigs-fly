@@ -6,6 +6,7 @@ public class ObjectScript : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private AudioSource audioSource;
     private float objectSpeed = 20;
 
 
@@ -19,6 +20,8 @@ public class ObjectScript : MonoBehaviour
     public void Init(ObjectInfo info)
     {
         sr.sprite = Resources.Load<Sprite>("Sprites/FallingObjects/" + info.name);
+        audioSource.clip = Resources.Load<AudioClip>("Sounds/" + info.name);
+        audioSource.Play();
         boxCollider.size = sr.bounds.size;
         boxCollider.size /= transform.localScale;
         //sr.sprite = 
