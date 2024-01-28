@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
-
+        SettingsMenuManager.instance.PlayMusic("CutScene");
     }
 
     // Update is called once per frame
@@ -42,6 +42,7 @@ public class DialogueManager : MonoBehaviour
 
         if(endedDialogue)
         {
+            SettingsMenuManager.instance.StopMusic("CutScene");
             color = blackPanel.GetComponent<Image>().color;
             if(blackPanel.GetComponent<Image>().color.a < 1)
             {
@@ -52,6 +53,7 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 //load next scene
+
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
             }
