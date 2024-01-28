@@ -24,7 +24,10 @@ public class ObjectScript : MonoBehaviour
         sr.sprite = Resources.Load<Sprite>("Sprites/FallingObjects/" + info.name);
         audioSource.clip = Resources.Load<AudioClip>("Sounds/" + info.name);
         if(audioSource.clip != null)
+        {
             audioSource.Play();
+            Debug.Log("jkfn");
+        }
         boxCollider.size = sr.bounds.size;
         boxCollider.size /= transform.localScale;
         //sr.sprite = 

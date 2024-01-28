@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sr: {fileID: 7630989683763697640}
   boxCollider: {fileID: 3063059740970930689}
+  audioSource: {fileID: 2318876641717459664}
 --- !u!61 &3063059740970930689
 BoxCollider2D:
   m_ObjectHideFlags: 0

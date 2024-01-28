@@ -45,7 +45,7 @@ public class ObjectSpawner : MonoBehaviour
         GameObject newObject = Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
         int rand = (int)Random.Range(cameraManegement.ins.level, cameraManegement.ins.level + 2);
         rand = (int)Mathf.Clamp(rand, cameraManegement.ins.level, objectList.objectInfoList.Length - 1);
-        Debug.Log(rand);
+        //Debug.Log(rand);
         //ObjectScript _objectScript 
         newObject.GetComponent<ObjectScript>().Init(objectList.objectInfoList[rand]);
         //objectList.Add(new)
