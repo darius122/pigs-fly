@@ -23,6 +23,7 @@ public class cameraManegement : MonoBehaviour
     public static cameraManegement ins;
 
     [SerializeField] GameObject bg, bgparent;
+    [SerializeField] playerAnimation test;
     private void Awake()
     {
         ins = this;
@@ -37,7 +38,16 @@ public class cameraManegement : MonoBehaviour
 
      
     }
-   
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+
+        test.SetTrigger("triggerBruh");
+        }
+    }
+
     public void CalTopDiff()
     {
         Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(topSide.transform.position);
@@ -144,7 +154,7 @@ public class cameraManegement : MonoBehaviour
 
     IEnumerator Resize()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(15);
         ExpandView(5);
         StartCoroutine(Resize());
     }
